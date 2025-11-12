@@ -87,7 +87,7 @@ LAB SETUP INSTRUCTIONS
  * curl "http://localhost:3000/echo?name=Ali&age=22"
  *   → 200 { ok:true, name:"Ali", age:"22", msg:"Hello Ali, you are 22" }
  *
- * curl -i "http://localhost:3000/echo?name=Ali"
+ * curl.exe -i "http://localhost:3000/echo?name=Ali"
  *   → 400 { ok:false, error:"name & age required" }
  *
  * curl "http://localhost:3000/profile/Jack/Black"
@@ -96,10 +96,10 @@ LAB SETUP INSTRUCTIONS
  * curl "http://localhost:3000/users/42"
  *   → 200 { ok:true, userId:42 }
  *
- * curl -i "http://localhost:3000/users/abc"
+ * curl.exe -i "http://localhost:3000/users/abc"
  *   → 400 { ok:false, error:"userId must be positive number" }
  *
- * curl -i "http://localhost:3000/users/-5"
+ * curl.exe -i "http://localhost:3000/users/-5"
  *   → 400 { ok:false, error:"userId must be positive number" }
  *
  */
@@ -109,6 +109,15 @@ const app = express();
 
 
 // create server
+const PORT = 3000;
+
+app.get("/", (req, res) => {
+    res.send("API running");
+});
+
+app.listen(PORT, () => {
+    console.log("API running at http://localhost:3000");
+});
 
 
 // Query params: /echo?name=Ali&age=22
@@ -121,6 +130,7 @@ const app = express();
 
 
 // Route params: /users/:userId route
+
 
 
 
